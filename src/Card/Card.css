@@ -1,0 +1,13 @@
+.Card {
+    width: 250px;
+    margin-right: 50px;
+}
+
+h2 {
+    position: relative;
+    font-size: 28px;
+    font-weight: 700;
+    padding-bottom: 25px;
+    border-bottom: #000 3px solid;
+}
+

@@ -1,0 +1,13 @@
+.App {
+    width: 100%;
+    display: flex;
+}
+
+.Main-section__wrapper {
+    padding: 50px 90px;
+}
+
+.Cards__wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+}
