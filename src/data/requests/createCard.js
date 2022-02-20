@@ -1,24 +1,13 @@
-function createCard({ token, title, status, description }) {
-    return fetch(
-        "https://radiant-temple-07706.herokuapp.com/cards",
+import client from '../client';
+
+function createCard({ title, status, description }) {
+    return client.post('/cards',
         {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                title: title,
-                status: status,
-                description: description
-            })
+            title: title,
+            status: status,
+            description: description
         },
-    )
-        .then(response => response.json())
-        .catch(e => {
-            console.log(e);
-            return {};
-        });
+    );
 }
 
 export default createCard;

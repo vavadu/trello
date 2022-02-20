@@ -1,24 +1,14 @@
-function updateCard({ token, cardID, title, status, description }) {
-    return fetch(
-        `https://radiant-temple-07706.herokuapp.com/cards/${cardID}`,
+import client from '../client';
+
+function updateCard({ cardId, title, status, description }) {
+    return client.put(
+        `/cards/${cardId}`,
         {
-            method: "PUT",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                title: title,
-                status: status,
-                description: description
-            })
+            title: title,
+            status: status,
+            description: description
         },
     )
-        .then(response => response.json())
-        .catch(e => {
-            console.log(e);
-            return {};
-        });
 }
 
 export default updateCard;
