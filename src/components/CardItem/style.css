@@ -17,6 +17,7 @@ p {
 }
 
 .Item {
+    cursor: pointer;
     padding: 15px 0;
     line-height: 24px;
     border-bottom: gainsboro 2px solid;

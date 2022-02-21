@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 function useCards() {
     const { data, isLoading } = useQuery('cards', getCards);
-    return { data, isLoading }
+    return { data: data ? data.data : [], isLoading }
 }
 
 export default useCards;

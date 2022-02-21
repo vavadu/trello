@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 function useStatuses() {
     const { data, isLoading } = useQuery('statuses', getStatuses);
-    return { data, isLoading }
+    return { data: data ? data.data : [], isLoading }
 }
 
 export default useStatuses;
