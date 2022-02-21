@@ -1,23 +1,16 @@
-import { useQuery, useMutation, QueryClient } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import loginRequest from '../requests/login';
 import registerRequest from '../requests/register';
-import { setToken, getToken } from '../client';
+import { setToken, getToken, setUser, getUser } from '../client';
 
-
-const userQueryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            staleTime: Infinity,
-        },
-    },
-})
 
 function useAuth() {
+    const queryClient = useQueryClient();
     const { mutate: mutateLogin, isLoading: isLoadingLogin } = useMutation(loginRequest, {
-        onSuccess: (data) => {
-            setToken(data.jwt);
-            // TOTO Store user data to LocalStorage
-            userQueryClient.setQueryData('authUser', data.user);
+        onSuccess: ({ data: { jwt, user } }) => {
+            setUser(user);
+            setToken(jwt);
+            queryClient.setQueryData('authUser', user);
             // TODO invalidate cache after jwt expiration
         }
     });
@@ -25,20 +18,19 @@ function useAuth() {
         onSuccess: (data) => {
             setToken(data.jwt);
             // TOTO Store user data to LocalStorage
-            userQueryClient.setQueryData('authUser', data.user);
+            queryClient.setQueryData('authUser', data.user);
             // TODO invalidate cache after jwt expiration
         }
     });
 
     const { data: authUser, isLoading: isLoadingUser } = useQuery('authUser', () => {
         const accessToken = getToken();
-        // TOOD: get userData from localStorage
+        const user = getUser();
         // TODO checkt if accessToken is still valid.
-        const valid = false;
-        if (valid) {
-            return {}; // TODO: user data
+        if (user != null) {
+            return user; // TODO: user data
         } else {
-            throw Error('Unauthorized');
+            return Promise.reject('Unauthorized');
         }
     });
 

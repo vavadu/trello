@@ -1,7 +1,7 @@
-import client from '../client';
+import { authClient } from '../client';
 
 function login({ login, password }) {
-    return client.post('/auth/local',
+    return authClient.post('/auth/local',
         {
             identifier: login,
             password: password,
