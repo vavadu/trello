@@ -1,8 +1,8 @@
 import React from "react";
-import Aside from "../Aside/Aside";
-import Header from "../Header/Header"
-import Card from "../Card/Card";
-import './index.css';
+import Aside from "../../components/Aside/Aside";
+import Header from "../../components/Header/Header"
+import Card from "../../components/Card/Card";
+import './Board.css';
 
 function Main() {
     return (
