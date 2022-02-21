@@ -1,12 +1,14 @@
-import client from '../client';
+import { authClient } from '../client';
 
-function login({ login, userPassword }) {
-    return client.post('/auth/local',
+function login({ login, password }) {
+    return authClient.post('/auth/local',
         {
             identifier: login,
-            password: userPassword,
+            password: password,
         },
     );
 }
 
 export default login;
+
+
