@@ -1,6 +1,6 @@
 import './Aside.css';
-import logo from '../assets/logo.png'
-import profile_img from '../assets/profile-photo.png'
+import logo from '../../assets/logo.png'
+import profile_img from '../../assets/profile-photo.png'
 
 function Aside() {
     return (

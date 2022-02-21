@@ -1,7 +1,7 @@
 import React from 'react';
 import useAuth from "./data/hooks/useAuth";
 import Login from './Pages/Login';
-import Main from "./Main";
+import Main from "./Pages/Board/Board";
 
 
 function App() {
