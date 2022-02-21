@@ -1,0 +1,27 @@
+h3 {
+    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+h3 .options_menu {
+    top: 0;
+}
+
+p {
+    width: 95%;
+    font-size: 14px;
+    font-weight: 400;
+    color: grey;
+}
+
+.Item {
+    padding: 15px 0;
+    line-height: 24px;
+    border-bottom: gainsboro 2px solid;
+}
+
+.Item__descr {
+    margin-bottom: 10px;
+}

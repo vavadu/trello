@@ -1,0 +1,29 @@
+.Aside {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-right: gainsboro 2px solid;
+    background: rgba(255, 255, 255, 0.92);
+    z-index: 2;
+}
+
+.Logo {
+    width: 45%;
+    margin-top: 50px;
+}
+
+.Profile {
+    width: 45%;
+    margin-bottom: 50px;
+}
+.Profile__img {
+    width: 100%;
+    border-radius: 100px;
+}
