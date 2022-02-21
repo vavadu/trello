@@ -1,20 +1,22 @@
 import useAuth from "../../data/hooks/useAuth"
+import Form from "../../components/Form/Form";
+import './index.css'
+import React from "react";
 
 export function Register() {
-    return (
-        <form>
-            <label>
-                <input placeholder="Login"></input>
-            </label>
-            <label>
-                <input placeholder="Email"></input>
-            </label>
-            <label>
-                <input placeholder="Password"></input>
-            </label>
 
-            <button to="/main">Login</button>
-        </form>
+    const sendInfo = (event) => {
+        event.preventDefault();
+       console.log('registration')
+    }
+
+    return (
+        <div className='container'>
+            <h1 className="header">Sign up</h1>
+            <Form submitFn={sendInfo} inputs={['login', 'email', 'password']} buttonText='Sign up'/>
+            <a className='login__link' href='#'>Already have an account? Sign in!</a>
+        </div>
+
     )
 }
 

@@ -3,6 +3,9 @@ body {
   font-family: 'Roboto', sans-serif;
   overflow-x: auto;
 }
+/*#root {
+  height: 100vh;
+}*/
 
 p, h1, h2, h3 {
   margin: 0;
