@@ -1,0 +1,16 @@
+label {
+    align-self: start;
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+input {
+    display: block;
+    height: 60px;
+    width: 96%;
+    margin-bottom: 35px;
+    font-size: 18px;
+    font-weight: 300;
+    padding-left: 15px;
+}
