@@ -18,7 +18,7 @@ export function Register() {
         <div className='container'>
             <h1 className="header">Sign up</h1>
             <Form submitFn={sendInfo} inputs={['login', 'email', 'password']} buttonText='Sign up'/>
-            <Link className="login__link" to="/login">Already have an account? Sign in!</Link>
+            <Link className="login__link" to="/">Already have an account? Sign in!</Link>
         </div>
 
     )
