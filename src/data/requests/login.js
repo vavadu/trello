@@ -6,7 +6,9 @@ function login({ login, password }) {
             identifier: login,
             password: password,
         },
-    );
+    ).catch((error) => {
+        return Promise.reject(error.response.data.data[0].messages[0].message);
+    });
 }
 
 export default login;

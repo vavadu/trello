@@ -20,3 +20,9 @@ h1.header {
     margin-bottom: 50px;
     text-align: center;
 }
+.register-error {
+    text-align: center;
+    background-color: salmon;
+    font-weight: 400;
+    padding: 20px;
+}

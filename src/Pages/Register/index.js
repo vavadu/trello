@@ -2,11 +2,11 @@ import useAuth from "../../data/hooks/useAuth"
 import Form from "../../components/Form/Form";
 import './index.css'
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function Register() {
 
-    const {mutateRegister} = useAuth();
+    const { mutateRegister, registerError } = useAuth();
 
     const sendInfo = (event) => {
         event.preventDefault();
@@ -17,8 +17,9 @@ export function Register() {
     return (
         <div className='container'>
             <h1 className="header">Sign up</h1>
-            <Form submitFn={sendInfo} inputs={['login', 'email', 'password']} buttonText='Sign up'/>
-            <Link className="login__link" to="/">Already have an account? Sign in!</Link>
+            <Form submitFn={sendInfo} inputs={['login', 'email', 'password']} buttonText='Sign up' />
+            {registerError ? <h4 className='register-error'>{registerError}</h4> : ""}
+            <Link className="login__link" to="/login">Already have an account? Sign in!</Link>
         </div>
 
     )

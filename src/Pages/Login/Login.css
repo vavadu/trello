@@ -17,6 +17,12 @@ h1.header {
 }
 
 .register__link {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     text-align: center;
+}
+.login-error {
+    text-align: center;
+    background-color: salmon;
+    font-weight: 400;
+    padding: 20px;
 }
