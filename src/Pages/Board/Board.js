@@ -15,7 +15,6 @@ function Main() {
     const { data } = useStatuses();
     const { data: cardsData } = useCards();
 
-
     return (
         <div className="Main">
             <Aside />
