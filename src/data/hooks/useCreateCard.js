@@ -1,9 +1,14 @@
 import createCardRequest from '../requests/createCard';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 
 
 function useCreateCard() {
-    const { mutate: createCard, isLoading } = useMutation(createCardRequest);
+    const queryClient = useQueryClient();
+    const { mutate: createCard, isLoading } = useMutation(createCardRequest, {
+        onSuccess: async () => {
+            await queryClient.invalidateQueries('cards');
+        }
+    });
     return { createCard, isLoading };
 }
 
