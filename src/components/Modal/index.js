@@ -24,7 +24,7 @@ const Modal = ({ active, setActive, editCard, setEditCard }) => {
         setEditCard(null);
     };
 
-    return (
+    return active && (
         <div className={active ? "modal active" : "modal"} onClick={onCancel}>
             <form className="modal-content" onClick={event => event.stopPropagation()} onSubmit={onSubmit}>
 
