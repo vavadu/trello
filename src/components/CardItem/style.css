@@ -2,10 +2,11 @@ h3 {
     position: relative;
     font-size: 16px;
     font-weight: 500;
-    margin-bottom: 10px;
+    
 }
 
 h3 .options_menu {
+    
     top: 0;
 }
 
@@ -25,4 +26,21 @@ p {
 
 .Item__descr {
     margin-bottom: 10px;
+}
+.card-header {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-icon {
+    cursor: pointer;
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+    filter: invert(25%) sepia(19%) saturate(522%) hue-rotate(190deg) brightness(94%) contrast(84%);
+}
+
+.card-icon:hover{
+    filter: invert(61%) sepia(59%) saturate(2154%) hue-rotate(172deg) brightness(103%) contrast(102%);
 }
