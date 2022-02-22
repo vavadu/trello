@@ -9,7 +9,7 @@ function App() {
     const { authUser, isLoadingUser } = useAuth();
 
     return (
-            authUser ? <Main /> : <Register />
+            authUser ? <Main /> : <Login />
         )
 
     // Add some React loader to app
