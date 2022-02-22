@@ -12,6 +12,8 @@ function Main() {
     const { data } = useStatuses();
     const { data: cardsData } = useCards();
 
+    console.log(data, cardsData);
+
     return (
         <div className="Main">
             <Aside />

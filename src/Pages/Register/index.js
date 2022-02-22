@@ -6,9 +6,12 @@ import {Link} from "react-router-dom";
 
 export function Register() {
 
+    const {mutateRegister} = useAuth();
+
     const sendInfo = (event) => {
         event.preventDefault();
-       console.log('registration')
+        const formData = new FormData(event.target);
+        mutateRegister({ login: formData.get("login"), email: formData.get("email"), password: formData.get("password") });
     }
 
     return (
