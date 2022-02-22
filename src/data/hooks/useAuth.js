@@ -6,7 +6,7 @@ import { setToken, getToken, setUser, getUser, removeToken, removeUser } from '.
 
 function useAuth() {
     const queryClient = useQueryClient();
-    const { mutate: mutateLogin, isLoading: isLoadingLogin } = useMutation(loginRequest, {
+    const { mutate: mutateLogin, isLoading: isLoadingLogin, error } = useMutation(loginRequest, {
         onSuccess: ({ data: { jwt, user } }) => {
             setUser(user);
             setToken(jwt);
@@ -14,7 +14,7 @@ function useAuth() {
             // TODO invalidate cache after jwt expiration
         }
     });
-    const { mutate: mutateRegister, isLoading: isLoadingRegister } = useMutation(registerRequest, {
+    const { mutate: mutateRegister, isLoading: isLoadingRegister, error: registerError } = useMutation(registerRequest, {
         onSuccess: (data) => {
             setToken(data.jwt);
             // TOTO Store user data to LocalStorage
@@ -35,7 +35,7 @@ function useAuth() {
         queryClient.invalidateQueries('authUser');
     }
 
-    return { mutateLogin, isLoadingLogin, mutateRegister, isLoadingRegister, authUser, isLoadingUser, logout };
+    return { mutateLogin, isLoadingLogin, error, mutateRegister, isLoadingRegister, registerError, authUser, isLoadingUser, logout };
 }
 
 export default useAuth;

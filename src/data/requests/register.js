@@ -7,7 +7,9 @@ function register({ login, email, password }) {
             email: email,
             password: password,
         },
-    )
+    ).catch((registerError) => {
+        return Promise.reject(registerError.response.data.data[0].messages[0].message);
+    });
 }
 
 export default register;

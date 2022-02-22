@@ -29,7 +29,12 @@ const Modal = ({ active, setActive, editCard, setEditCard }) => {
             <form className="modal-content" onClick={event => event.stopPropagation()} onSubmit={onSubmit}>
 
                 <input placeholder="title" name="title" defaultValue={title} />
-                <input placeholder="status" name="status" defaultValue={status} />
+                <select placeholder="status" defaultValue={status} name="status">
+                    <option value="to_do">to do</option>
+                    <option value="in_progress">in progress</option>
+                    <option value="testing">testing</option>
+                    <option value="done">done</option>
+                </select>
                 <textarea placeholder="description" name="description" defaultValue={description} type="text" />
                 <button type="submit">Save</button>
                 <button type="button" onClick={onCancel}>Cancel</button>
