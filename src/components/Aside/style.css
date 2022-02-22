@@ -2,7 +2,7 @@
     position: sticky;
     top: 0;
     left: 0;
-    width: 100px;
+    width: 150px;
     height: 100vh;
     flex-shrink: 0;
     display: flex;
@@ -20,10 +20,15 @@
 }
 
 .Profile {
-    width: 45%;
+    width: 65%;
     margin-bottom: 50px;
 }
 .Profile__img {
     width: 100%;
     border-radius: 100px;
+}
+.logout {
+    margin-top: 20px;
+    padding: 0px;
+    height: 40px;
 }

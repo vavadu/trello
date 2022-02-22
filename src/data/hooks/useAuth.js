@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import loginRequest from '../requests/login';
 import registerRequest from '../requests/register';
-import { setToken, getToken, setUser, getUser } from '../client';
+import { setToken, getToken, setUser, getUser, removeToken, removeUser } from '../client';
 
 
 function useAuth() {
@@ -27,14 +27,15 @@ function useAuth() {
         const accessToken = getToken();
         const user = getUser();
         // TODO checkt if accessToken is still valid.
-        if (user != null) {
-            return user; // TODO: user data
-        } else {
-            return Promise.reject('Unauthorized');
-        }
-    });
+        return user;
+    }, { retry: false });
 
-    return { mutateLogin, isLoadingLogin, mutateRegister, isLoadingRegister, authUser, isLoadingUser, };
+    const logout = () => {
+        localStorage.clear();
+        queryClient.invalidateQueries('authUser');
+    }
+
+    return { mutateLogin, isLoadingLogin, mutateRegister, isLoadingRegister, authUser, isLoadingUser, logout };
 }
 
 export default useAuth;

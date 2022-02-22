@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import useAuth from "./data/hooks/useAuth";
 import {Routes, Route, useNavigate} from "react-router-dom";
 import Login from './Pages/Login/Login';
-import {Register} from "./Pages/Register";
+import { Register } from "./Pages/Register";
 import Main from "./Pages/Board/Board";
 
 
