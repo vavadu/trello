@@ -5,6 +5,7 @@ import Login from './Pages/Login/Login';
 import { Register } from "./Pages/Register";
 import Loader from "./components/Loader/Loader";
 import Main from "./Pages/Board/Board";
+import './App.css'
 
 
 function App() {

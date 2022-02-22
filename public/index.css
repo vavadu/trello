@@ -25,17 +25,17 @@ body {
 }
 
 .blob.top {
-     top: 0;
-     animation: blob-top 1s infinite ease-in;
- }
+    top: 0;
+    animation: blob-top 1s infinite ease-in;
+}
 .blob.bottom {
-     top: 100%;
-     animation: blob-bottom 1s infinite ease-in;
- }
+    top: 100%;
+    animation: blob-bottom 1s infinite ease-in;
+}
 .blob.left {
-     left: 0;
-     animation: blob-left 1s infinite ease-in;
- }
+    left: 0;
+    animation: blob-left 1s infinite ease-in;
+}
 
 
 .move-blob {
