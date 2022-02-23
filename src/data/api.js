@@ -4,7 +4,7 @@ import { getUserData } from "./storage";
 
 
 
-class Api {
+export class Api {
     constructor(baseUrl) {
         this.baseUrl = baseUrl;
 
