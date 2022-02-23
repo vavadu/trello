@@ -13,7 +13,7 @@ function useAuth() {
         }
     });
     const { mutate: mutateRegister, isLoading: isLoadingRegister, error: registerError } = useMutation(api.register, {
-        onSuccess: (data) => {
+        onSuccess: ({ data }) => {
             setUserData(data);
             queryClient.setQueryData('authUser', data.user);
             // TODO invalidate cache after jwt expiration
