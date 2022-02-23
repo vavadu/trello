@@ -15,9 +15,38 @@
     transform: scale(1);
 }
 .modal-content{
-
     width: 300px;
+    border: 2px gainsboro solid;
     background-color: #fff;
-    padding: 20px;
+    padding: 50px;
+}
 
+input {
+    text-align: center;
+    padding: 0;
+}
+
+select {
+    background-color: #fff;
+    height: 30px;
+    width: 96%;
+    margin-bottom: 35px;
+}
+
+textarea {
+    width: 96%;
+    height: 115px;
+    resize: none;
+    margin-bottom: 35px;
+    font-size: 14px;
+}
+
+.buttons_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    width: 45%;
 }

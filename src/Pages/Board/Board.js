@@ -21,7 +21,7 @@ function Main() {
             <div className="Main-section__wrapper">
                 <Header />
 
-                <button onClick={() => { setModalActive(true); setEditCard(null) }}>Create new task</button>
+                <button className="task_btn" onClick={() => { setModalActive(true); setEditCard(null) }}>Create new task</button>
 
                 <div className="Cards__wrapper">
                     {data.map((elem) => <Column item={elem} setEditCard={(item) => { setEditCard(item); setModalActive(true) }} key={elem.value} title={elem.title} cards={cardsData.filter(card => card.status === elem.value)} />)}

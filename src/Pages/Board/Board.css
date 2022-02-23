@@ -4,10 +4,16 @@
 }
 
 .Main-section__wrapper {
-    padding: 50px 90px;
+    width: 80%;
+    padding: 50px 0;
+    margin: 0 auto;
 }
 
 .Cards__wrapper {
     display: flex;
     flex-wrap: nowrap;
+}
+
+.task_btn {
+    width: 100%;
 }

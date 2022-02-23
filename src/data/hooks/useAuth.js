@@ -15,10 +15,11 @@ function useAuth() {
         }
     });
     const { mutate: mutateRegister, isLoading: isLoadingRegister, error: registerError } = useMutation(registerRequest, {
-        onSuccess: (data) => {
-            setToken(data.jwt);
+        onSuccess: ({ data: { jwt, user } }) => {
+            setUser(user);
+            setToken(jwt);
             // TOTO Store user data to LocalStorage
-            queryClient.setQueryData('authUser', data.user);
+            queryClient.setQueryData('authUser', user);
             // TODO invalidate cache after jwt expiration
         }
     });

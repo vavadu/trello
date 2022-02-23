@@ -3,6 +3,7 @@ import './style.css';
 import trash from "./trash.svg";
 import edit from "./edit.svg";
 import useDelete from "../../data/hooks/useDeleteCards";
+import {normalizeDate} from "../../helpers/normalizeDate";
 
 function CardItem({ setEditCard, item }) {
 
@@ -19,7 +20,7 @@ function CardItem({ setEditCard, item }) {
             </div>
 
             <p className="Item__descr">{item.description}</p>
-            <p className="Item__date">{item.published_at}</p>
+            <p className="Item__date">{normalizeDate(item.published_at)}</p>
         </div>
     );
 }

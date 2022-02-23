@@ -17,8 +17,8 @@ export function Register() {
     return (
         <div className='container'>
             <h1 className="header">Sign up</h1>
-            <Form submitFn={sendInfo} inputs={['login', 'email', 'password']} buttonText='Sign up' />
             {registerError ? <h4 className='register-error'>{registerError}</h4> : ""}
+            <Form submitFn={sendInfo} inputs={['login', 'email', 'password']} buttonText='Sign up' />
             <Link className="login__link" to="/">Already have an account? Sign in!</Link>
         </div>
 

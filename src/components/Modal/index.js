@@ -28,16 +28,18 @@ const Modal = ({ active, setActive, editCard, setEditCard }) => {
         <div className={active ? "modal active" : "modal"} onClick={onCancel}>
             <form className="modal-content" onClick={event => event.stopPropagation()} onSubmit={onSubmit}>
 
-                <input placeholder="title" name="title" defaultValue={title} />
+                <input placeholder="Title" name="title" defaultValue={title} />
                 <select placeholder="status" defaultValue={status} name="status">
-                    <option value="to_do">to do</option>
-                    <option value="in_progress">in progress</option>
-                    <option value="testing">testing</option>
-                    <option value="done">done</option>
+                    <option value="to_do">To Do</option>
+                    <option value="in_progress">In Progress</option>
+                    <option value="testing">Testing</option>
+                    <option value="done">Done</option>
                 </select>
-                <textarea placeholder="description" name="description" defaultValue={description} type="text" />
-                <button type="submit">Save</button>
-                <button type="button" onClick={onCancel}>Cancel</button>
+                <textarea placeholder="Description" name="description" defaultValue={description} type="text"/>
+                <div className="buttons_wrapper">
+                    <button type="submit">Save</button>
+                    <button type="button" onClick={onCancel}>Cancel</button>
+                </div>
             </form>
         </div >
     )
