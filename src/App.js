@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import useAuth from "./data/hooks/useAuth";
-import {Routes, Route, useNavigate} from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Login from './Pages/Login/Login';
 import { Register } from "./Pages/Register";
 import Loader from "./components/Loader/Loader";
@@ -10,31 +10,34 @@ import './App.css'
 
 function App() {
     const { authUser, isLoadingUser } = useAuth();
-    let navigate = useNavigate();
-    let [element, setElement] = useState(<></>);
-    useEffect(() => {
-        if (isLoadingUser) {
-            setElement(<Loader/>)
-        } else if (authUser) {
-            setElement(<></>)
-            navigate('board');
-        } else {
-            setElement(<></>)
-            navigate('/')
-        }
-    }, [authUser, isLoadingUser]);
+
+    if (isLoadingUser) {
+        return <Loader />;
+    }
+
+    if (!authUser) {
+        return (
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route
+                    path="*"
+                    element={<Navigate to="/" />}
+                />
+            </Routes>
+        );
+    }
 
 
     return (
-        <>
-            {element}
-            <Routes>
-                <Route path="/" element={<Login/>}/>
-                <Route path="/board" element={<Main/>}/>
-                <Route path="/register" element={<Register/>}/>
-            </Routes>
-        </>
-    )
+        <Routes>
+            <Route path="/board" element={<Main />} />
+            <Route
+                path="*"
+                element={<Navigate to="/board" />}
+            />
+        </Routes>
+    );
 }
 
 export default App;
