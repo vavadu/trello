@@ -1,10 +1,11 @@
-import createCardRequest from '../requests/createCard';
 import { useMutation, useQueryClient } from 'react-query';
+import { api } from '../api';
+
 
 
 function useCreateCard() {
     const queryClient = useQueryClient();
-    const { mutate: createCard, isLoading } = useMutation(createCardRequest, {
+    const { mutate: createCard, isLoading } = useMutation(api.createCard, {
         onSuccess: async () => {
             await queryClient.invalidateQueries('cards');
         }
