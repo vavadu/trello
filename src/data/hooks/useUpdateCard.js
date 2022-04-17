@@ -2,14 +2,12 @@ import { useMutation, useQueryClient } from 'react-query';
 import { api } from '../api';
 
 
-function useUpdateCard() {
+export function useUpdateCardMutation() {
     const queryClient = useQueryClient();
-    const { mutate: updateCard, isLoading } = useMutation(api.updateCard, {
+    const updateCardMutation = useMutation(api.updateCard, {
         onSuccess: async () => {
             await queryClient.invalidateQueries('cards');
         }
     });
-    return { updateCard, isLoading };
+    return updateCardMutation;
 }
-export default useUpdateCard;
-

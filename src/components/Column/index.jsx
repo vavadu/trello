@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React  from "react";
 import CardItem from "../CardItem";
 import './style.css';
-import {getElementError} from "@testing-library/react";
-import useUpdateCard from "../../data/hooks/useUpdateCard";
+import { useUpdateCardMutation } from "../../data/hooks/useUpdateCard";
 
 
-function Column({ setEditCard, item: { title, value }, cards }) {
-    const { updateCard, isLoading : updateIsLoading } = useUpdateCard();
+function Column({ setEditCard, item, cards }) {
+    const updateCardMutation = useUpdateCardMutation();
 
     function dragOverHandler(e) {
         e.preventDefault();
@@ -14,19 +13,21 @@ function Column({ setEditCard, item: { title, value }, cards }) {
 
     function dropHandler(e) {
         e.preventDefault();
-        const id = e.dataTransfer.getData("id");
-        const title = e.dataTransfer.getData("title");
-        const descr = e.dataTransfer.getData("description");
-
-        updateCard({cardId: id, title: title,  status: value, description: descr});
+        const data = {
+            cardId: e.dataTransfer.getData("id"),
+            title: e.dataTransfer.getData("title"),
+            description: e.dataTransfer.getData("description"),
+            status: item.value
+        }
+        updateCardMutation.mutate(data);
     }
 
     return (
         <div className="Card drop-zone">
-            <h2>{title}<div className='options_menu'></div></h2>
+            <h2>{item.title}<div className='options_menu'></div></h2>
             <ul className="Card__list"
-                onDrop={ (e) => dropHandler(e)}
-                onDragOver={(e) => dragOverHandler(e)}
+                onDrop={dropHandler}
+                onDragOver={dragOverHandler}
             >
                 {cards.map((elem) => <CardItem key={elem.id} setEditCard={setEditCard} item={elem} />)}
             </ul>

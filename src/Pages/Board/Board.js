@@ -9,6 +9,8 @@ import Modal from "../../components/Modal"
 
 import { useState } from "react"
 
+const getCardsByStatus = (data, status) => data.filter(c => c.status === status);
+
 function Main() {
     const [modalActive, setModalActive] = useState(false);
     const [editCard, setEditCard] = useState(null);
@@ -24,7 +26,16 @@ function Main() {
                 <button className="task_btn" onClick={() => { setModalActive(true); setEditCard(null) }}>Create new task</button>
 
                 <div className="Cards__wrapper">
-                    {data.map((elem) => <Column id={elem.value} item={elem} setEditCard={(item) => { setEditCard(item); setModalActive(true) }} key={elem.value} title={elem.title} cards={cardsData.filter(card => card.status === elem.value)} />)}
+                    {data.map((elem) => (
+                        <Column
+                            id={elem.value}
+                            item={elem}
+                            setEditCard={(item) => { setEditCard(item); setModalActive(true) }}
+                            key={elem.value}
+                            title={elem.title}
+                            cards={getCardsByStatus(cardsData, elem.value)} />
+                        )
+                    )}
                 </div>
             </div>
             <Modal active={modalActive} setActive={setModalActive} editCard={editCard} setEditCard={setEditCard} />

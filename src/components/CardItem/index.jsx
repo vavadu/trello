@@ -3,7 +3,6 @@ import './style.css';
 import trash from "./trash.svg";
 import edit from "./edit.svg";
 import useDelete from "../../data/hooks/useDeleteCards";
-import useUpdateCard from "../../data/hooks/useUpdateCard";
 import {normalizeDate} from "../../helpers/normalizeDate";
 
 function CardItem({ setEditCard, item, id }) {
