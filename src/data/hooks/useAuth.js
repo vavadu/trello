@@ -5,14 +5,14 @@ import { setUserData, getUserData, removeUserData } from '../storage';
 
 function useAuth() {
     const queryClient = useQueryClient();
-    const { mutate: mutateLogin, isLoading: isLoadingLogin, error } = useMutation(api.login, {
+    const loginMutation = useMutation(api.login, {
         onSuccess: ({ data }) => {
             setUserData(data);
             queryClient.setQueryData('authUser', data.user);
             // TODO invalidate cache after jwt expiration
         }
     });
-    const { mutate: mutateRegister, isLoading: isLoadingRegister, error: registerError } = useMutation(api.register, {
+    const registerMutation = useMutation(api.register, {
         onSuccess: ({ data }) => {
             setUserData(data);
             queryClient.setQueryData('authUser', data.user);
@@ -20,7 +20,7 @@ function useAuth() {
         }
     });
 
-    const { data: authUser, isLoading: isLoadingUser } = useQuery('authUser', () => {
+    const authUserQuery = useQuery('authUser', () => {
         const userData = getUserData();
         // TODO checkt if accessToken is still valid.
         if (userData) {
@@ -34,7 +34,7 @@ function useAuth() {
         queryClient.invalidateQueries('authUser');
     }
 
-    return { mutateLogin, isLoadingLogin, error, mutateRegister, isLoadingRegister, registerError, authUser, isLoadingUser, logout };
+    return { loginMutation, registerMutation, authUserQuery, logout };
 }
 
 export default useAuth;
