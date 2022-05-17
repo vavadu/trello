@@ -5,17 +5,18 @@ import Login from './Pages/Login/Login';
 import { Register } from "./Pages/Register";
 import Loader from "./components/Loader/Loader";
 import Main from "./Pages/Board/Board";
+import { connect } from "react-redux";
+
 import './App.css'
 
 
-function App() {
-    const { authUserQuery } = useAuth();
+function App(auth) {
 
-    if (authUserQuery.isLoading) {
+    if (auth.loading) {
         return <Loader />;
     }
 
-    if (!authUserQuery.data) {
+    if (!auth.user) {
         return (
             <Routes>
                 <Route path="/" element={<Login />} />
@@ -39,5 +40,7 @@ function App() {
         </Routes>
     );
 }
-
-export default App;
+const mapStateToProps = ({ auth }) => ({
+    auth,
+})
+export default connect(mapStateToProps)(App);
