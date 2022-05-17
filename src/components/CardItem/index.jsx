@@ -3,8 +3,7 @@ import './style.css';
 import trash from "./trash.svg";
 import edit from "./edit.svg";
 import useDelete from "../../data/hooks/useDeleteCards";
-import useUpdateCard from "../../data/hooks/useUpdateCard";
-import {normalizeDate} from "../../helpers/normalizeDate";
+import { normalizeDate } from "../../helpers/normalizeDate";
 
 function CardItem({ setEditCard, item, id }) {
 
@@ -13,11 +12,11 @@ function CardItem({ setEditCard, item, id }) {
     function dragStartHandler(e) {
         e.dataTransfer.setData("id", item.id);
         e.dataTransfer.setData("title", item.title);
-        e.dataTransfer.setData("description", item.description );
+        e.dataTransfer.setData("description", item.description);
     }
 
     return (
-        <div onDragStart={(e) => dragStartHandler(e)} className="Item" draggable="true">
+        <div onDragStart={dragStartHandler} className="Item" draggable="true">
             <h3 className="Item__title">{item.title}</h3>
             <img src={edit} alt="edit" onClick={() => { setEditCard(item) }} className="card-edit card-icon" />
             <img src={trash} alt="delete" className="card-delete card-icon" onClick={() => { deleteCard({ cardId: item.id }) }} />

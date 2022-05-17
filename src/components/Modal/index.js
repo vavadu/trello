@@ -3,10 +3,21 @@ import "./style.css";
 import useCreateCard from "../../data/hooks/useCreateCard";
 import useUpdateCard from "../../data/hooks/useUpdateCard"
 
+
+const initialCardData = {
+    title: "",
+    status: "",
+    description: ""
+}
 const Modal = ({ active, setActive, editCard, setEditCard }) => {
     const { createCard } = useCreateCard();
     const { updateCard } = useUpdateCard();
-    const { title, status, description, id } = editCard || { title: "", status: "", description: "" };
+    const { title, status, description, id } = editCard || { initialCardData };
+
+    const onCancel = () => {
+        setActive(false);
+        setEditCard(null);
+    };
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -16,13 +27,9 @@ const Modal = ({ active, setActive, editCard, setEditCard }) => {
         } else {
             createCard({ title: formData.get("title"), status: formData.get("status"), description: formData.get("description") });
         }
-        setActive(false);
-        setEditCard(null);
+        onCancel();
     };
-    const onCancel = () => {
-        setActive(false);
-        setEditCard(null);
-    };
+
 
     return active && (
         <div className={active ? "modal active" : "modal"} onClick={onCancel}>
@@ -35,7 +42,7 @@ const Modal = ({ active, setActive, editCard, setEditCard }) => {
                     <option value="testing">Testing</option>
                     <option value="done">Done</option>
                 </select>
-                <textarea placeholder="Description" name="description" defaultValue={description} type="text"/>
+                <textarea placeholder="Description" name="description" defaultValue={description} type="text" />
                 <div className="buttons_wrapper">
                     <button type="submit">Save</button>
                     <button type="button" onClick={onCancel}>Cancel</button>

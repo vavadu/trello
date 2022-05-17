@@ -9,13 +9,13 @@ import './App.css'
 
 
 function App() {
-    const { authUser, isLoadingUser } = useAuth();
+    const { authUserQuery } = useAuth();
 
-    if (isLoadingUser) {
+    if (authUserQuery.isLoading) {
         return <Loader />;
     }
 
-    if (!authUser) {
+    if (!authUserQuery.data) {
         return (
             <Routes>
                 <Route path="/" element={<Login />} />

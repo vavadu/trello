@@ -3,13 +3,11 @@ import './Form.css';
 import FormInput from "./FormInput/FormInput";
 
 
-function Form({ submitFn, inputs, buttonText }) {
+function Form({ onSubmit, children, buttonText }) {
     return (
-        <form onSubmit={submitFn} >
-            {
-                inputs.map(input => (<FormInput key={input} inputName={input} />))
-            }
-            <button>{buttonText}</button>
+        <form onSubmit={onSubmit} >
+            {children}
+            <button type="submit">{buttonText}</button>
         </form>
     )
 }
