@@ -20,7 +20,6 @@ function Login({ auth, dispatch }) {
             password: formData.get("password")
         }));
     }
-    //Мне кажется функцию можно написать как-то красивее или вообще вынести отсюда.Надо подумать
 
     return (
 

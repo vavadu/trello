@@ -1,4 +1,5 @@
 import { api } from '../data/api';
+import { removeUserData } from '../data/storage';
 
 export const CONSTANTS = {
     USER_AUTH_REQUEST_START: "USER_AUTH_REQUEST_START",
@@ -50,3 +51,7 @@ export const register = ({ login, email, password }) => dispatch => {
             })
         })
 }
+
+export const logout = () => ({
+    type: CONSTANTS.LOGOUT
+});
