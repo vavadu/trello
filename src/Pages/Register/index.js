@@ -1,27 +1,44 @@
-import useAuth from "../../data/hooks/useAuth"
 import Form from "../../components/Form/Form";
+import FormInput from '../../components/Form/FormInput/FormInput';
 import './index.css'
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { register } from '../../actions';
 
-export function Register() {
 
-    const { mutateRegister, registerError } = useAuth();
+function Register({ auth, dispatch }) {
+
 
     const sendInfo = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
-        mutateRegister({ login: formData.get("login"), email: formData.get("email"), password: formData.get("password") });
+
+        dispatch(register({
+            login: formData.get("login"),
+            email: formData.get("email"),
+            password: formData.get("password")
+        }));
+
     }
 
     return (
         <div className='container'>
             <h1 className="header">Sign up</h1>
-            {registerError ? <h4 className='register-error'>{registerError}</h4> : ""}
-            <Form submitFn={sendInfo} inputs={['login', 'email', 'password']} buttonText='Sign up' />
+            {auth.error ? <h4 className='register-error'>{auth.error}</h4> : ""}
+            <Form onSubmit={sendInfo} buttonText='Sign up'>
+                <FormInput inputName="email" />
+                <FormInput inputName="login" />
+                <FormInput inputName="password" />
+            </Form>
             <Link className="login__link" to="/">Already have an account? Sign in!</Link>
         </div>
 
     )
 }
 
+const mapStateToProps = ({ auth }) => ({
+    auth,
+})
+
+export default connect(mapStateToProps)(Register);

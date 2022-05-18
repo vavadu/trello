@@ -3,7 +3,7 @@ import { setUserData, getUserData, removeUserData } from '../data/storage';
 
 const initialState = {
     loading: false,
-    user: getUserData(),
+    user: (getUserData() || {}).user,
     error: null
 }
 const userReduser = (state = initialState, action) => {
@@ -13,21 +13,21 @@ const userReduser = (state = initialState, action) => {
             return { ...state, loading: true };
         }
         case CONSTANTS.USER_AUTH_REQUEST_SUCCESS: {
-            setUserData(action.data.user);
+            setUserData(action.data);
             return { ...state, user: action.data.user, loading: false };
         }
         case CONSTANTS.USER_AUTH_REQUEST_ERROR: {
-            return { ...state, error: true, loading: false };
+            return { ...state, error: action.error, loading: false };
         }
         case CONSTANTS.USER_REGISTER_REQUEST_START: {
             return { ...state, loading: true };
         }
         case CONSTANTS.USER_REGISTER_REQUEST_SUCCESS: {
-            setUserData(action.data.user);
+            setUserData(action.data);
             return { ...state, user: action.data.user, loading: false };
         }
         case CONSTANTS.USER_REGISTER_REQUEST_ERROR: {
-            return { ...state, error: true, loading: false };
+            return { ...state, error: action.error, loading: false };
         }
         case CONSTANTS.LOGOUT: {
             removeUserData();

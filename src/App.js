@@ -1,8 +1,7 @@
 import React from 'react';
-import useAuth from "./data/hooks/useAuth";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from './Pages/Login/Login';
-import { Register } from "./Pages/Register";
+import Register from "./Pages/Register";
 import Loader from "./components/Loader/Loader";
 import Main from "./Pages/Board/Board";
 import { connect } from "react-redux";
@@ -10,8 +9,7 @@ import { connect } from "react-redux";
 import './App.css'
 
 
-function App(auth) {
-
+function App({ auth }) {
     if (auth.loading) {
         return <Loader />;
     }

@@ -2,16 +2,23 @@ import React from 'react';
 import './Login.css'
 import { Link } from "react-router-dom";
 import Form from "../../components/Form/Form";
-import useAuth from '../../data/hooks/useAuth';
 import FormInput from '../../components/Form/FormInput/FormInput';
+import { connect } from "react-redux";
 
-function Login() {
-    const { loginMutation } = useAuth();
+
+import { login } from '../../actions';
+
+
+function Login({ auth, dispatch }) {
 
     const sendInfo = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
-        loginMutation.mutate({ login: formData.get("login"), password: formData.get("password") });
+
+        dispatch(login({
+            login: formData.get("login"),
+            password: formData.get("password")
+        }));
     }
     //Мне кажется функцию можно написать как-то красивее или вообще вынести отсюда.Надо подумать
 
@@ -23,10 +30,14 @@ function Login() {
                 <FormInput inputName="login" />
                 <FormInput inputName="password" />
             </Form>
-            {loginMutation.error ? <h4 className='login-error'>{loginMutation.error}</h4> : ""}
+            {auth.error ? <h4 className='login-error'>{auth.error}</h4> : ""}
             <Link className="register__link" to="/register"> Not registered yet? Sign up!</Link>
         </div>
     )
 }
 
-export default Login;
+const mapStateToProps = ({ auth }) => ({
+    auth,
+})
+
+export default connect(mapStateToProps)(Login);
