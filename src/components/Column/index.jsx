@@ -1,11 +1,11 @@
 import React from "react";
 import CardItem from "../CardItem";
 import './style.css';
-import useUpdateCardMutation from "../../data/hooks/useUpdateCard";
+import { connect } from "react-redux";
+import { updateCard } from "../../actions";
 
 
-function Column({ setEditCard, item, cards }) {
-    const updateCardMutation = useUpdateCardMutation();
+function Column({ setEditCard, item, cards, dispatch }) {
 
     function dragOverHandler(e) {
         e.preventDefault();
@@ -20,7 +20,7 @@ function Column({ setEditCard, item, cards }) {
             status: item.value,
             description: e.dataTransfer.getData("description")
         }
-        updateCardMutation.mutate(data);
+        dispatch(updateCard(data))
     }
 
     return (
@@ -36,4 +36,4 @@ function Column({ setEditCard, item, cards }) {
     );
 }
 
-export default Column;
+export default connect()(Column);

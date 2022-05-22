@@ -1,25 +1,22 @@
 import { CONSTANTS } from "../actions";
 
-const initialCardData = {
-    title: "",
-    status: "",
-    description: ""
+const initial = {
+    cards: [],
+    error: null,
+    loading: false,
 }
 
-const cardsReducer = (state = { initialCardData }, action) => {
+const cardsReducer = (state = initial, action) => {
     switch (action.type) {
-        case CONSTANTS.ADD_CARD: {
-            const { text, listID, id } = action.payload;
-
-            const newCard = {
-                text,
-                cardId: `card-${id}`,
-                list: listID
-            };
-
-            return { ...state, [`card-${id}`]: newCard };
+        case CONSTANTS.GET_CARD_LIST_REQUEST_START: {
+            return { ...state, loading: true };
         }
-
+        case CONSTANTS.GET_CARD_LIST_REQUEST_SUCCESS: {
+            return { ...state, cards: action.data, loading: false };
+        }
+        case CONSTANTS.GET_CARD_LIST_REQUEST_ERROR: {
+            return { ...state, error: action.error, loading: false };
+        }
         default:
             return state;
     }

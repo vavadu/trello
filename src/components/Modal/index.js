@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
-import useCreateCard from "../../data/hooks/useCreateCard";
-import useUpdateCard from "../../data/hooks/useUpdateCard"
+import { updateCard, addCard } from "../../actions";
+import { connect } from "react-redux";
 
 
 const initialCardData = {
@@ -9,9 +9,8 @@ const initialCardData = {
     status: "",
     description: ""
 }
-const Modal = ({ active, setActive, editCard, setEditCard }) => {
-    const { createCard } = useCreateCard();
-    const { updateCard } = useUpdateCard();
+const Modal = ({ active, setActive, editCard, setEditCard, dispatch }) => {
+
     const { title, status, description, id } = editCard || { initialCardData };
 
     const onCancel = () => {
@@ -22,10 +21,18 @@ const Modal = ({ active, setActive, editCard, setEditCard }) => {
     const onSubmit = (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
+        const data = {
+            cardId: id,
+            title: formData.get("title"),
+            status: formData.get("status"),
+            description: formData.get("description")
+        }
         if (editCard) {
-            updateCard({ cardId: id, title: formData.get("title"), status: formData.get("status"), description: formData.get("description") });
+
+            dispatch(updateCard(data));
         } else {
-            createCard({ title: formData.get("title"), status: formData.get("status"), description: formData.get("description") });
+
+            dispatch(addCard(data))
         }
         onCancel();
     };
@@ -52,4 +59,4 @@ const Modal = ({ active, setActive, editCard, setEditCard }) => {
     )
 }
 
-export default Modal;
+export default connect()(Modal);
