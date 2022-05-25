@@ -1,3 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`testing App should match snapshot 1`] = `"<div class=\\"spinner\\"><div class=\\"blob top\\"></div><div class=\\"blob bottom\\"></div><div class=\\"blob left\\"></div><div class=\\"blob move-blob\\"></div></div>"`;
+exports[`testing App loader 1`] = `
+<DocumentFragment>
+  <div
+    class="spinner"
+  >
+    <div
+      class="blob top"
+    />
+    <div
+      class="blob bottom"
+    />
+    <div
+      class="blob left"
+    />
+    <div
+      class="blob move-blob"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`testing App should match snapshot 1`] = `"<div class=\\"container\\"><h1 class=\\"header\\">Sign in</h1><form><label for=\\"login\\">Login</label><input name=\\"login\\"/><label for=\\"password\\">Password</label><input name=\\"password\\"/><button type=\\"submit\\">Sign in</button></form><a class=\\"register__link\\" href=\\"/register\\"> Not registered yet? Sign up!</a></div>"`;

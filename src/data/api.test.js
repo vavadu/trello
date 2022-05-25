@@ -1,6 +1,4 @@
 import { api } from "./api";
-import { getUserData } from "./storage";
-import axios from "axios";
 
 
 describe("testing class api", () => {
@@ -89,8 +87,4 @@ describe("testing class api", () => {
         return api.register("user", "password", "email").then(data => expect(data).toEqual(resp));
 
     });
-
-    test("interseptors", () => [
-
-    ])
 })

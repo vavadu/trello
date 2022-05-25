@@ -38,7 +38,9 @@ function App({ auth }) {
         </Routes>
     );
 }
+
 const mapStateToProps = ({ auth }) => ({
     auth,
 })
+
 export default connect(mapStateToProps)(App);
