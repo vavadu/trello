@@ -2,7 +2,7 @@ import React from "react";
 import CardItem from "../CardItem";
 import './style.css';
 import { connect } from "react-redux";
-import { updateCard } from "../../actions";
+import { updateCard } from "../../redux/actions";
 
 
 function Column({ setEditCard, item, cards, dispatch }) {

@@ -6,7 +6,7 @@ import FormInput from '../../components/Form/FormInput/FormInput';
 import { connect } from "react-redux";
 
 
-import { login } from '../../actions';
+import { login } from '../../redux/actions';
 
 
 function Login({ auth, dispatch }) {

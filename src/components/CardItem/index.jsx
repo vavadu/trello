@@ -3,7 +3,7 @@ import './style.css';
 import trash from "./trash.svg";
 import edit from "./edit.svg";
 import { normalizeDate } from "../../helpers/normalizeDate";
-import { deleteCard } from "../../actions"
+import { deleteCard } from "../../redux/actions"
 import { connect } from "react-redux"
 
 function CardItem({ setEditCard, item, id, dispatch }) {

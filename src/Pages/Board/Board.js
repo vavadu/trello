@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header"
 import Column from "../../components/Column";
 import './Board.css';
 import Modal from "../../components/Modal";
-import { getCards, getStatuses } from "../../actions";
+import { getCards, getStatuses } from "../../redux/actions";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
 

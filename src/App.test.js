@@ -4,7 +4,7 @@ import App from './App.js';
 import { createStore, applyMiddleware } from 'redux';
 import { QueryClientProvider, QueryClient } from 'react-query';
 
-import rootReducer from './reducers';
+import rootReducer from './redux/reducers';
 import { BrowserRouter } from "react-router-dom";
 import { render, screen } from "@testing-library/react";
 import { composeWithDevTools } from '@redux-devtools/extension'

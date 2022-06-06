@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import rootReducer from './redux/reducers';
 import { composeWithDevTools } from '@redux-devtools/extension'
 
 
@@ -14,7 +14,6 @@ jest.mock("react-dom", () => ({ render: jest.fn() }));
 
 describe("test ReactDOM.render, called with App", () => {
     it("render", () => {
-        const queryClient = new QueryClient()
         const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
         const container = document.createElement("div");
@@ -24,11 +23,9 @@ describe("test ReactDOM.render, called with App", () => {
         expect(ReactDOM.render).toHaveBeenCalledWith(
             <React.StrictMode>
                 <BrowserRouter>
-                    <QueryClientProvider client={queryClient}>
-                        <Provider store={store}>
-                            <App />
-                        </Provider>
-                    </QueryClientProvider>
+                    <Provider store={store}>
+                        <App />
+                    </Provider>
                 </BrowserRouter>
             </React.StrictMode>, container);
     });

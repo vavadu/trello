@@ -1,5 +1,5 @@
 import { CONSTANTS } from "../actions";
-import { setUserData, getUserData, removeUserData } from '../data/storage';
+import { setUserData, getUserData, removeUserData } from '../../data/storage';
 
 const initialState = {
     loading: false,

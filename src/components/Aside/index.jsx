@@ -1,7 +1,7 @@
 import './style.css';
 import logo from '../../assets/logo.png'
 import profile_img from '../../assets/profile-photo.png'
-import { logout } from '../../actions';
+import { logout } from '../../redux/actions';
 import { connect } from "react-redux";
 
 
