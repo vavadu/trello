@@ -9,7 +9,6 @@ const initialState = {
 const userReduser = (state = initialState, action) => {
     switch (action.type) {
         case CONSTANTS.USER_AUTH_REQUEST_START: {
-
             return { ...state, loading: true };
         }
         case CONSTANTS.USER_AUTH_REQUEST_SUCCESS: {

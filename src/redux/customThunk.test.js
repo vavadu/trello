@@ -21,7 +21,6 @@ describe('thunk middleware', () => {
     })
 
     it('must run the given action function with dispatch and getState', done => {
-        // @ts-ignore
         const actionHandler = nextHandler()
 
         actionHandler((dispatch, getState) => {
